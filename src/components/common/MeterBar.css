@@ -1,0 +1,49 @@
+.meter-bar {
+  min-width: 140px;
+}
+
+.meter-bar-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-sm);
+  margin-bottom: 4px;
+}
+
+.meter-bar-label {
+  color: var(--color-text-secondary);
+}
+
+.meter-bar-value {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+}
+
+.meter-bar-track {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-sunken);
+  border: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+.meter-bar-fill {
+  height: 100%;
+  transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.meter-bar-signal {
+  background-color: var(--color-signal);
+}
+
+.meter-bar-warning {
+  background-color: var(--color-warning);
+}
+
+.meter-bar-noise {
+  background-color: var(--color-noise);
+}
+
+.meter-bar-accent {
+  background-color: var(--color-accent);
+}

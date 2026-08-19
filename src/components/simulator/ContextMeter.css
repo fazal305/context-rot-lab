@@ -1,0 +1,114 @@
+.context-meter {
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.context-meter-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-sm);
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.context-meter-title {
+  font-weight: var(--font-weight-semibold);
+}
+
+.context-meter-value {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.context-meter-track {
+  height: 10px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-sunken);
+  border: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+  margin-bottom: var(--spacing-md);
+}
+
+.context-meter-fill {
+  height: 100%;
+  background-color: var(--color-accent);
+  transition: width var(--transition-normal);
+  border-radius: var(--radius-full);
+}
+
+.context-meter-fill.is-critical {
+  background-color: var(--color-noise);
+}
+
+.context-meter-legend {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.context-meter-legend-row {
+  display: grid;
+  grid-template-columns: 72px 1fr 32px;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.context-meter-legend-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.context-meter-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.context-meter-dot-signal {
+  background-color: var(--color-signal);
+}
+
+.context-meter-dot-noise {
+  background-color: var(--color-noise);
+}
+
+.context-meter-dot-unused {
+  background-color: var(--color-text-muted);
+}
+
+.context-meter-bar {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-sunken);
+  overflow: hidden;
+}
+
+.context-meter-bar-fill {
+  height: 100%;
+  transition: width var(--transition-normal);
+}
+
+.context-meter-bar-signal {
+  background-color: var(--color-signal);
+}
+
+.context-meter-bar-noise {
+  background-color: var(--color-noise);
+}
+
+.context-meter-bar-unused {
+  background-color: var(--color-text-muted);
+}
+
+.context-meter-legend-count {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-align: right;
+}

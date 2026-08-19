@@ -1,0 +1,25 @@
+.context-panel-example-select select {
+  font-size: var(--font-size-sm);
+  padding: 0.3rem var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-secondary);
+}
+
+.context-panel-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.context-panel-quality {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.context-panel-quality-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}

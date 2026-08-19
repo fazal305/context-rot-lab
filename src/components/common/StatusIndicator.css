@@ -1,0 +1,66 @@
+.status-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: 0.25rem var(--spacing-sm);
+  border-radius: var(--radius-full);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface-elevated);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+.status-indicator-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: var(--radius-full);
+  background-color: currentColor;
+  flex-shrink: 0;
+}
+
+.status-indicator-signal {
+  color: var(--color-signal);
+}
+
+.status-indicator-noise {
+  color: var(--color-noise);
+}
+
+.status-indicator-warning {
+  color: var(--color-warning);
+}
+
+.status-indicator-info {
+  color: var(--color-info);
+}
+
+.status-indicator-accent {
+  color: var(--color-accent-secondary);
+}
+
+.status-indicator-muted {
+  color: var(--color-text-muted);
+}
+
+.status-indicator-signal .status-indicator-dot,
+.status-indicator-noise .status-indicator-dot {
+  animation: status-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .status-indicator-dot {
+    animation: none;
+  }
+}

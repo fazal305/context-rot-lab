@@ -1,0 +1,34 @@
+.settings-section {
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.settings-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}
+
+.settings-row-title {
+  font-size: var(--font-size-md);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.settings-row-description {
+  margin: 0;
+  color: var(--color-text-secondary);
+  max-width: 52ch;
+}
+
+.settings-clear-btn {
+  border-color: var(--color-noise);
+  color: var(--color-noise);
+}
+
+.settings-clear-btn:hover {
+  background-color: var(--color-noise-muted);
+  color: var(--color-noise);
+  border-color: var(--color-noise);
+}

@@ -1,0 +1,130 @@
+.sidebar {
+  width: var(--sidebar-width);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--color-surface);
+  border-right: var(--border-width) solid var(--color-border);
+  padding: var(--spacing-md) var(--spacing-sm);
+  overflow-y: auto;
+  transition: width var(--transition-normal), transform var(--transition-normal);
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: var(--spacing-sm);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.sidebar-link,
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.5rem var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.sidebar-link:hover,
+.sidebar-collapse-btn:hover {
+  background-color: var(--color-surface-elevated);
+  color: var(--color-text-primary);
+}
+
+.sidebar-link.is-active {
+  background-color: var(--color-accent-muted);
+  color: var(--color-accent-strong);
+}
+
+.sidebar-collapse-btn {
+  color: var(--color-text-muted);
+}
+
+.sidebar-backdrop {
+  display: none;
+}
+
+/* ---- Desktop collapsed state ---- */
+.sidebar.is-collapsed {
+  width: var(--sidebar-width-collapsed);
+}
+
+.sidebar.is-collapsed .sidebar-link-label {
+  display: none;
+}
+
+.sidebar.is-collapsed .sidebar-link,
+.sidebar.is-collapsed .sidebar-collapse-btn {
+  justify-content: center;
+}
+
+/*
+  Desktop (>=992px) and tablet (768-991px) both use this same static,
+  user-collapsible sidebar — the collapse toggle above is what makes it
+  "collapsible" at tablet width. Only true mobile (<768px) switches to an
+  off-canvas drawer, since there isn't enough width for a persistent
+  sidebar alongside content.
+*/
+@media (max-width: 767px) {
+  .sidebar {
+    position: fixed;
+    top: var(--topbar-height);
+    left: 0;
+    bottom: 0;
+    width: min(80vw, 280px);
+    transform: translateX(-100%);
+    z-index: var(--z-overlay);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .sidebar.is-collapsed {
+    width: min(80vw, 280px);
+  }
+
+  .sidebar.is-collapsed .sidebar-link-label {
+    display: inline;
+  }
+
+  .sidebar.is-mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-collapse-btn {
+    display: none;
+  }
+
+  .sidebar-backdrop {
+    display: block;
+    position: fixed;
+    inset: var(--topbar-height) 0 0 0;
+    background-color: var(--color-overlay);
+    border: none;
+    padding: 0;
+    z-index: calc(var(--z-overlay) - 1);
+    cursor: pointer;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar {
+    transition: none;
+  }
+}

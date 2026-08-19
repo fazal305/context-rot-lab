@@ -1,0 +1,25 @@
+import { ICON_PATHS } from "../../data/icons";
+
+export default function Icon({ name, size = 18, strokeWidth = 2, className = "", ...rest }) {
+  const path = ICON_PATHS[name];
+  if (!path) return null;
+
+  return (
+    <svg
+      className={`icon ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...rest}
+    >
+      <path d={path} />
+    </svg>
+  );
+}

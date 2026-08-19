@@ -1,0 +1,37 @@
+.state-map {
+  margin-top: var(--spacing-md);
+  min-height: 0;
+}
+
+.state-map-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.state-map-section h3 {
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--spacing-sm);
+}
+
+.state-map-section ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.state-map-section li {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  padding: 4px var(--spacing-sm);
+  background-color: var(--color-surface-elevated);
+  border-radius: var(--radius-sm);
+  word-break: break-word;
+}

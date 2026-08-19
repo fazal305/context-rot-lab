@@ -1,0 +1,41 @@
+.dementia-generate-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.dementia-generate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0.7rem var(--spacing-lg);
+  border-radius: var(--radius-md);
+  border: none;
+  background-color: var(--color-accent);
+  color: var(--color-text-inverse);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.dementia-generate-btn:hover {
+  background-color: var(--color-accent-strong);
+}
+
+.dementia-generate-btn:active {
+  transform: scale(0.98);
+}
+
+.dementia-cleanup-note {
+  font-size: var(--font-size-sm);
+  color: var(--color-info);
+  flex: 1;
+}
+
+.dementia-reset-btn {
+  margin-left: auto;
+}

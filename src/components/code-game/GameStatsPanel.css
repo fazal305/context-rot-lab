@@ -1,0 +1,17 @@
+.game-stats-meters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+}
+
+.game-stats-meters .meter-bar {
+  flex: 1;
+  min-width: 180px;
+}
+
+.game-stats-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}

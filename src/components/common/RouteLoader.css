@@ -1,0 +1,7 @@
+.route-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--panel-min-height);
+  width: 100%;
+}

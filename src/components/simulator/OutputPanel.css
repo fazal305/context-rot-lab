@@ -1,0 +1,42 @@
+.output-panel-badge {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.output-panel-metrics {
+  justify-content: flex-start;
+}
+
+.output-panel-issues {
+  margin-top: var(--spacing-md);
+}
+
+.output-panel-issues-title {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.output-panel-issues ul {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.output-panel-issues li {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+}
+
+.output-panel-disclaimer {
+  margin: var(--spacing-md) 0 0;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  border-top: var(--border-width) solid var(--color-border);
+  padding-top: var(--spacing-sm);
+}

@@ -1,0 +1,47 @@
+.token-health {
+  width: 100%;
+}
+
+.token-health-track {
+  height: 8px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface-sunken);
+  border: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+.token-health-fill {
+  height: 100%;
+  transition: width var(--transition-normal), background-color var(--transition-normal);
+}
+
+.token-health-low {
+  background-color: var(--color-signal);
+}
+
+.token-health-moderate {
+  background-color: var(--color-info);
+}
+
+.token-health-high {
+  background-color: var(--color-warning);
+}
+
+.token-health-critical {
+  background-color: var(--color-noise);
+}
+
+.token-health-levels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4px;
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.token-health-level.is-active {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+}

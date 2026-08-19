@@ -1,0 +1,16 @@
+.context-panel-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.code-input-health {
+  margin-top: var(--spacing-md);
+}
+
+.code-input-health-label {
+  display: block;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
+}
