@@ -17,6 +17,10 @@ MORE CONTEXT → MORE NOISE → LESS SIGNAL → LOWER SIMULATED ACCURACY
 
 ---
 
+## Live Demo
+
+**[fazal305.github.io/context-rot-lab](https://fazal305.github.io/context-rot-lab/)**
+
 ## What's in here
 
 The app combines three related experiences behind one shared design system:
