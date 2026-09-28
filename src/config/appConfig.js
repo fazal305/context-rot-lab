@@ -3,7 +3,8 @@
 // never hard-code route strings or labels.
 
 export const APP_NAME = "Context Rot Lab";
-export const APP_TAGLINE = "Simulate context rot. Shrink real context. Survive Dementia Code.";
+export const APP_TAGLINE =
+  "Simulate context rot. Shrink real context. Survive Dementia Code.";
 
 export const NAV_ITEMS = [
   { path: "/", label: "Overview", icon: "grid", end: true },
@@ -12,7 +13,11 @@ export const NAV_ITEMS = [
   { path: "/dementia-code", label: "Dementia Code", icon: "cpu" },
 ];
 
-export const SETTINGS_NAV_ITEM = { path: "/settings", label: "Settings", icon: "settings" };
+export const SETTINGS_NAV_ITEM = {
+  path: "/settings",
+  label: "Settings",
+  icon: "settings",
+};
 
 // Status pill shown in the top bar, keyed by route pathname.
 export const ROUTE_STATUS = {

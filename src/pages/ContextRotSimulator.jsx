@@ -28,8 +28,15 @@ export default function ContextRotSimulator() {
         badge={<StatusIndicator label="SIMULATION" tone="signal" />}
       />
 
-      <ContextMeter tokens={simulation.stats.tokens} lineBreakdown={simulation.lineBreakdown} />
-      <ContextControls operations={operations} onApply={applyOperation} lastOperation={lastOperation} />
+      <ContextMeter
+        tokens={simulation.stats.tokens}
+        lineBreakdown={simulation.lineBreakdown}
+      />
+      <ContextControls
+        operations={operations}
+        onApply={applyOperation}
+        lastOperation={lastOperation}
+      />
 
       <div className="split-grid">
         <ContextInputPanel
@@ -40,7 +47,10 @@ export default function ContextRotSimulator() {
           examples={examples}
           onLoadExample={loadExample}
         />
-        <OutputPanel simulation={simulation} isRecalculating={isRecalculating} />
+        <OutputPanel
+          simulation={simulation}
+          isRecalculating={isRecalculating}
+        />
       </div>
     </div>
   );

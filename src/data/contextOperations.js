@@ -29,7 +29,8 @@ export const CONTEXT_OPERATIONS = [
     id: "new-thread",
     label: "Start New Thread",
     icon: "play",
-    description: "Keep only the most recent signal content, like a fresh conversation.",
+    description:
+      "Keep only the most recent signal content, like a fresh conversation.",
   },
   {
     id: "reset",

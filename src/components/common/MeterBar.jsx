@@ -2,7 +2,12 @@ import "./MeterBar.css";
 
 // Generic labeled percentage bar — used for game resources like accuracy
 // and build health, anywhere a StatusIndicator dot is too coarse.
-export default function MeterBar({ label, value, tone = "accent", suffix = "%" }) {
+export default function MeterBar({
+  label,
+  value,
+  tone = "accent",
+  suffix = "%",
+}) {
   const clamped = Math.min(100, Math.max(0, value));
   return (
     <div className="meter-bar">
@@ -21,7 +26,10 @@ export default function MeterBar({ label, value, tone = "accent", suffix = "%" }
         aria-valuemin={0}
         aria-valuemax={100}
       >
-        <div className={`meter-bar-fill meter-bar-${tone}`} style={{ width: `${clamped}%` }} />
+        <div
+          className={`meter-bar-fill meter-bar-${tone}`}
+          style={{ width: `${clamped}%` }}
+        />
       </div>
     </div>
   );

@@ -40,7 +40,10 @@ export function classifyLines(text) {
 }
 
 export function getContextTier(tokens) {
-  return CONTEXT_TIERS.find((tier) => tokens <= tier.maxTokens) ?? CONTEXT_TIERS[CONTEXT_TIERS.length - 1];
+  return (
+    CONTEXT_TIERS.find((tier) => tokens <= tier.maxTokens) ??
+    CONTEXT_TIERS[CONTEXT_TIERS.length - 1]
+  );
 }
 
 function countDuplicateLines(text) {
@@ -90,16 +93,24 @@ export function analyzeContext(text) {
     ACCURACY_FLOOR,
     99,
   );
-  const confidence = clamp(Math.round(accuracyScore + noiseScore * CONFIDENCE_OVERCONFIDENCE_BIAS), 0, 99);
+  const confidence = clamp(
+    Math.round(accuracyScore + noiseScore * CONFIDENCE_OVERCONFIDENCE_BIAS),
+    0,
+    99,
+  );
   const utilization = clamp(stats.tokens / MAX_CONTEXT_TOKENS, 0, 1);
 
   const duplicateCount = countDuplicateLines(text);
   const diagnosticIssues = [];
   if (noiseScore > NOISE_WARNING_THRESHOLD) {
-    diagnosticIssues.push(`High noise ratio detected (${Math.round(noiseScore * 100)}% of lines).`);
+    diagnosticIssues.push(
+      `High noise ratio detected (${Math.round(noiseScore * 100)}% of lines).`,
+    );
   }
   if (utilization > UTILIZATION_WARNING_THRESHOLD) {
-    diagnosticIssues.push(`Context window nearly full (${Math.round(utilization * 100)}% used).`);
+    diagnosticIssues.push(
+      `Context window nearly full (${Math.round(utilization * 100)}% used).`,
+    );
   }
   if (unusedLines / totalLines > UNUSED_WARNING_THRESHOLD) {
     diagnosticIssues.push("Large amount of blank/whitespace padding.");
@@ -117,7 +128,12 @@ export function analyzeContext(text) {
     accuracyScore,
     confidence,
     utilization,
-    lineBreakdown: { signal: signalLines, noise: noiseLines, unused: unusedLines, total: totalLines },
+    lineBreakdown: {
+      signal: signalLines,
+      noise: noiseLines,
+      unused: unusedLines,
+      total: totalLines,
+    },
     diagnosticIssues,
   };
 }

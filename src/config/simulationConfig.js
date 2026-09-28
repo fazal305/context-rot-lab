@@ -8,10 +8,34 @@ export const MAX_CONTEXT_TOKENS = 16000;
 // at a tier's baseAccuracy and is then reduced by noise (see
 // NOISE_ACCURACY_PENALTY). tone maps to a design-token color.
 export const CONTEXT_TIERS = [
-  { id: "low", label: "Low", maxTokens: 2000, baseAccuracy: 97, tone: "signal" },
-  { id: "medium", label: "Moderate", maxTokens: 6000, baseAccuracy: 83, tone: "info" },
-  { id: "high", label: "High", maxTokens: 12000, baseAccuracy: 62, tone: "warning" },
-  { id: "extreme", label: "Critical", maxTokens: Infinity, baseAccuracy: 35, tone: "noise" },
+  {
+    id: "low",
+    label: "Low",
+    maxTokens: 2000,
+    baseAccuracy: 97,
+    tone: "signal",
+  },
+  {
+    id: "medium",
+    label: "Moderate",
+    maxTokens: 6000,
+    baseAccuracy: 83,
+    tone: "info",
+  },
+  {
+    id: "high",
+    label: "High",
+    maxTokens: 12000,
+    baseAccuracy: 62,
+    tone: "warning",
+  },
+  {
+    id: "extreme",
+    label: "Critical",
+    maxTokens: Infinity,
+    baseAccuracy: 35,
+    tone: "noise",
+  },
 ];
 
 // Maximum points subtracted from a tier's baseAccuracy at noiseScore === 1.

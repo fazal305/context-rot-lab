@@ -1,6 +1,12 @@
 import { ICON_PATHS } from "../../data/icons";
 
-export default function Icon({ name, size = 18, strokeWidth = 2, className = "", ...rest }) {
+export default function Icon({
+  name,
+  size = 18,
+  strokeWidth = 2,
+  className = "",
+  ...rest
+}) {
   const path = ICON_PATHS[name];
   if (!path) return null;
 

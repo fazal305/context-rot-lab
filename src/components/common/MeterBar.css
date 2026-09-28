@@ -29,7 +29,9 @@
 
 .meter-bar-fill {
   height: 100%;
-  transition: width var(--transition-normal), background-color var(--transition-normal);
+  transition:
+    width var(--transition-normal),
+    background-color var(--transition-normal);
 }
 
 .meter-bar-signal {

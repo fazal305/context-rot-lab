@@ -31,7 +31,12 @@ export default function ContextShrink() {
 
       <div className="split-grid">
         <div>
-          <CodeInputPanel value={code} onChange={setCode} stats={rawStats} onReset={reset} />
+          <CodeInputPanel
+            value={code}
+            onChange={setCode}
+            stats={rawStats}
+            onReset={reset}
+          />
           <CleanOptionsPanel options={options} onToggle={toggleOption} />
         </div>
         <CleanedCodePanel

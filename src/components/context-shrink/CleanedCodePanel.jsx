@@ -4,17 +4,30 @@ import { downloadTextFile } from "../../utils/fileUtils";
 import { FEATURE_FLAGS } from "../../config/appConfig";
 import "./CleanedCodePanel.css";
 
-export default function CleanedCodePanel({ cleaned, rawStats, cleanedStats, isRecalculating }) {
+export default function CleanedCodePanel({
+  cleaned,
+  rawStats,
+  cleanedStats,
+  isRecalculating,
+}) {
   const charsSaved = Math.max(0, rawStats.characters - cleanedStats.characters);
   const tokensSaved = Math.max(0, rawStats.tokens - cleanedStats.tokens);
-  const pctSaved = rawStats.characters ? Math.round((charsSaved / rawStats.characters) * 100) : 0;
+  const pctSaved = rawStats.characters
+    ? Math.round((charsSaved / rawStats.characters) * 100)
+    : 0;
 
   return (
     <section className="panel surface-card" aria-label="Cleaned code">
       <div className="panel-header">
-        <h2 className="panel-title">Cleaned{isRecalculating ? " · updating…" : ""}</h2>
+        <h2 className="panel-title">
+          Cleaned{isRecalculating ? " · updating…" : ""}
+        </h2>
         <div className="cleaned-code-actions">
-          <CopyButton getText={() => cleaned} label="Copy" copiedLabel="Copied" />
+          <CopyButton
+            getText={() => cleaned}
+            label="Copy"
+            copiedLabel="Copied"
+          />
           {FEATURE_FLAGS.enableContextShrinkExport && (
             <>
               <button
@@ -28,7 +41,11 @@ export default function CleanedCodePanel({ cleaned, rawStats, cleanedStats, isRe
                 type="button"
                 className="action-button"
                 onClick={() =>
-                  downloadTextFile("cleaned-context.md", `\`\`\`\n${cleaned}\n\`\`\`\n`, "text/markdown")
+                  downloadTextFile(
+                    "cleaned-context.md",
+                    `\`\`\`\n${cleaned}\n\`\`\`\n`,
+                    "text/markdown",
+                  )
                 }
               >
                 Download .md

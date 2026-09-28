@@ -5,25 +5,38 @@
 import { clamp } from "./number";
 import { UPGRADES } from "../data/upgrades";
 import { COMPONENT_NAME_PARTS, AI_RESPONSES } from "../data/gameResponses";
-import { ACCURACY_TIERS, BASE_ACCURACY, ACCURACY_FLOOR, MAX_GAME_CONTEXT_TOKENS } from "../config/gameConfig";
+import {
+  ACCURACY_TIERS,
+  BASE_ACCURACY,
+  ACCURACY_FLOOR,
+  MAX_GAME_CONTEXT_TOKENS,
+} from "../config/gameConfig";
 
 function pick(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
 export function getAccuracyTier(accuracy) {
-  return ACCURACY_TIERS.find((tier) => accuracy >= tier.min) ?? ACCURACY_TIERS[ACCURACY_TIERS.length - 1];
+  return (
+    ACCURACY_TIERS.find((tier) => accuracy >= tier.min) ??
+    ACCURACY_TIERS[ACCURACY_TIERS.length - 1]
+  );
 }
 
 export function computeAccuracy(tokens, upgradeEffects) {
   const base = BASE_ACCURACY + upgradeEffects.accuracyBonus;
-  const ratio = clamp(tokens / MAX_GAME_CONTEXT_TOKENS / upgradeEffects.decayResistance, 0, 1);
+  const ratio = clamp(
+    tokens / MAX_GAME_CONTEXT_TOKENS / upgradeEffects.decayResistance,
+    0,
+    1,
+  );
   const accuracy = base - ratio * (base - ACCURACY_FLOOR);
   return clamp(Math.round(accuracy), ACCURACY_FLOOR, 99);
 }
 
 export function generateComponentName(tier) {
-  const { simple, compoundPrefixes, compoundMiddles, compoundSuffixes } = COMPONENT_NAME_PARTS;
+  const { simple, compoundPrefixes, compoundMiddles, compoundSuffixes } =
+    COMPONENT_NAME_PARTS;
   if (tier.id === "pristine" || tier.id === "solid") {
     return `${pick(simple)}.jsx`;
   }
@@ -64,12 +77,18 @@ export function computeUpgradeEffects(ownedLevels) {
     const level = ownedLevels[upgrade.id] ?? 0;
     if (!level) return;
     const { effect } = upgrade;
-    if (effect.tokenGrowthMultiplier) effects.tokenGrowthMultiplier *= effect.tokenGrowthMultiplier ** level;
-    if (effect.accuracyBonus) effects.accuracyBonus += effect.accuracyBonus * level;
-    if (effect.decayResistance) effects.decayResistance *= effect.decayResistance ** level;
-    if (effect.healthDecayMultiplier) effects.healthDecayMultiplier *= effect.healthDecayMultiplier ** level;
-    if (effect.debtGrowthMultiplier) effects.debtGrowthMultiplier *= effect.debtGrowthMultiplier ** level;
-    if (effect.autoCleanAmount) effects.autoCleanAmount += effect.autoCleanAmount * level;
+    if (effect.tokenGrowthMultiplier)
+      effects.tokenGrowthMultiplier *= effect.tokenGrowthMultiplier ** level;
+    if (effect.accuracyBonus)
+      effects.accuracyBonus += effect.accuracyBonus * level;
+    if (effect.decayResistance)
+      effects.decayResistance *= effect.decayResistance ** level;
+    if (effect.healthDecayMultiplier)
+      effects.healthDecayMultiplier *= effect.healthDecayMultiplier ** level;
+    if (effect.debtGrowthMultiplier)
+      effects.debtGrowthMultiplier *= effect.debtGrowthMultiplier ** level;
+    if (effect.autoCleanAmount)
+      effects.autoCleanAmount += effect.autoCleanAmount * level;
   });
   return effects;
 }

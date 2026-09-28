@@ -8,7 +8,9 @@ export default function PageHeader({ title, description, badge, actions }) {
           <h1>{title}</h1>
           {badge}
         </div>
-        {description && <p className="page-header-description">{description}</p>}
+        {description && (
+          <p className="page-header-description">{description}</p>
+        )}
       </div>
       {actions && <div className="page-header-actions">{actions}</div>}
     </header>

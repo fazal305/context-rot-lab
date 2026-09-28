@@ -29,7 +29,9 @@ export function summarizeContext(text) {
   const head = lines.slice(0, 20);
   const tail = lines.slice(-10);
   const collapsedCount = lines.length - head.length - tail.length;
-  return [...head, `// … summarized ${collapsedCount} lines …`, ...tail].join("\n");
+  return [...head, `// … summarized ${collapsedCount} lines …`, ...tail].join(
+    "\n",
+  );
 }
 
 export function compressContext(text) {
@@ -38,7 +40,9 @@ export function compressContext(text) {
     .map((line) => line.replace(/[ \t]+/g, " ").trimEnd())
     .filter((line) => !/^\s*(\/\/|#)/.test(line));
 
-  const collapsed = lines.filter((line, index) => !(line.trim() === "" && lines[index - 1]?.trim() === ""));
+  const collapsed = lines.filter(
+    (line, index) => !(line.trim() === "" && lines[index - 1]?.trim() === ""),
+  );
   return collapsed.join("\n").trim();
 }
 
@@ -46,7 +50,11 @@ export function startNewThread(text) {
   const lines = text.split("\n");
   const signalIndexes = [];
   lines.forEach((line, index) => {
-    if (line.trim() && !LOG_LINE_PATTERN.test(line) && !/^\s*(\/\/|#)/.test(line)) {
+    if (
+      line.trim() &&
+      !LOG_LINE_PATTERN.test(line) &&
+      !/^\s*(\/\/|#)/.test(line)
+    ) {
       signalIndexes.push(index);
     }
   });

@@ -8,7 +8,9 @@
   border-right: var(--border-width) solid var(--color-border);
   padding: var(--spacing-md) var(--spacing-sm);
   overflow-y: auto;
-  transition: width var(--transition-normal), transform var(--transition-normal);
+  transition:
+    width var(--transition-normal),
+    transform var(--transition-normal);
 }
 
 .sidebar-nav {

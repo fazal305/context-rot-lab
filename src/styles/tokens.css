@@ -49,8 +49,11 @@
   --color-status-error: var(--color-noise);
 
   /* ---- Typography ---- */
-  --font-sans: -apple-system, "Segoe UI", Roboto, "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --font-sans:
+    -apple-system, "Segoe UI", Roboto, "Inter", system-ui, sans-serif;
+  --font-mono:
+    "JetBrains Mono", "Fira Code", ui-monospace, "SFMono-Regular", Consolas,
+    monospace;
 
   --font-size-xs: 0.75rem;
   --font-size-sm: 0.8125rem;

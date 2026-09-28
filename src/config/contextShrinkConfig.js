@@ -13,7 +13,8 @@ export const CLEAN_OPTION_DEFINITIONS = [
   {
     id: "removeComments",
     label: "Remove comments",
-    description: "Strips // and /* */ comments, skipping over string and template literal contents.",
+    description:
+      "Strips // and /* */ comments, skipping over string and template literal contents.",
   },
   {
     id: "removeConsoleLogs",
@@ -28,12 +29,14 @@ export const CLEAN_OPTION_DEFINITIONS = [
   {
     id: "removeUnusedImports",
     label: "Remove unused imports",
-    description: "Drops imported names that never appear elsewhere in the code. Review the diff before trusting this on complex files.",
+    description:
+      "Drops imported names that never appear elsewhere in the code. Review the diff before trusting this on complex files.",
   },
   {
     id: "collapseWhitespace",
     label: "Collapse duplicate whitespace",
-    description: "Collapses runs of spaces outside of leading indentation and trims trailing whitespace.",
+    description:
+      "Collapses runs of spaces outside of leading indentation and trims trailing whitespace.",
   },
 ];
 

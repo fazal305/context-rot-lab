@@ -28,16 +28,23 @@ export default function CodeInputPanel({ value, onChange, stats, onReset }) {
 
       <div className="panel-footer">
         <div className="context-panel-stats">
-          <StatChip label="Characters" value={stats.characters.toLocaleString()} />
+          <StatChip
+            label="Characters"
+            value={stats.characters.toLocaleString()}
+          />
           <StatChip label="Words" value={stats.words.toLocaleString()} />
           <StatChip label="Lines" value={stats.lines.toLocaleString()} />
-          <StatChip label="Tokens (est.)" value={stats.tokens.toLocaleString()} />
+          <StatChip
+            label="Tokens (est.)"
+            value={stats.tokens.toLocaleString()}
+          />
         </div>
       </div>
 
       <div className="code-input-health">
         <span className="code-input-health-label">
-          Estimated context: {Math.round((stats.tokens / MAX_CONTEXT_TOKENS) * 100)}%
+          Estimated context:{" "}
+          {Math.round((stats.tokens / MAX_CONTEXT_TOKENS) * 100)}%
         </span>
         <TokenHealthBar tokens={stats.tokens} maxTokens={MAX_CONTEXT_TOKENS} />
       </div>

@@ -5,7 +5,8 @@ export const UPGRADES = [
   {
     id: "token-pruner",
     name: "Token Pruner",
-    description: "Trims redundant tokens from every generation before they hit context.",
+    description:
+      "Trims redundant tokens from every generation before they hit context.",
     baseCost: 15,
     costGrowth: 1.6,
     maxLevel: 5,
@@ -14,7 +15,8 @@ export const UPGRADES = [
   {
     id: "cursorrules",
     name: "Write .cursorrules",
-    description: "Pins down conventions so simulated output drifts less as context grows.",
+    description:
+      "Pins down conventions so simulated output drifts less as context grows.",
     baseCost: 30,
     costGrowth: 1,
     maxLevel: 1,
@@ -23,7 +25,8 @@ export const UPGRADES = [
   {
     id: "context-cleaner",
     name: "Automated Context Cleaner",
-    description: "Every 5th generation, automatically prunes a chunk of stale context.",
+    description:
+      "Every 5th generation, automatically prunes a chunk of stale context.",
     baseCost: 40,
     costGrowth: 1.8,
     maxLevel: 3,
@@ -41,7 +44,8 @@ export const UPGRADES = [
   {
     id: "better-model",
     name: "Better AI Model",
-    description: "Raises the accuracy ceiling before context even starts piling up.",
+    description:
+      "Raises the accuracy ceiling before context even starts piling up.",
     baseCost: 60,
     costGrowth: 2,
     maxLevel: 3,
@@ -50,7 +54,8 @@ export const UPGRADES = [
   {
     id: "rubber-duck",
     name: "Rubber Duck",
-    description: "A small, silent, surprisingly effective reduction in technical debt.",
+    description:
+      "A small, silent, surprisingly effective reduction in technical debt.",
     baseCost: 10,
     costGrowth: 1.4,
     maxLevel: 5,

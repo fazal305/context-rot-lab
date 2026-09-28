@@ -26,7 +26,11 @@ export default function DementiaCode() {
   } = useDementiaGame();
 
   const handleReset = () => {
-    if (window.confirm("Reset Dementia Code progress? This clears lines of code, upgrades, and history.")) {
+    if (
+      window.confirm(
+        "Reset Dementia Code progress? This clears lines of code, upgrades, and history.",
+      )
+    ) {
       reset();
     }
   };
@@ -40,16 +44,28 @@ export default function DementiaCode() {
       />
 
       <div className="dementia-generate-row surface-card">
-        <button type="button" className="dementia-generate-btn" onClick={generate}>
+        <button
+          type="button"
+          className="dementia-generate-btn"
+          onClick={generate}
+        >
           <Icon name="bolt" size={18} />
           Generate Component
         </button>
         {cleanupNote && (
-          <span className="dementia-cleanup-note" role="status" aria-live="polite">
+          <span
+            className="dementia-cleanup-note"
+            role="status"
+            aria-live="polite"
+          >
             {cleanupNote}
           </span>
         )}
-        <button type="button" className="action-button dementia-reset-btn" onClick={handleReset}>
+        <button
+          type="button"
+          className="action-button dementia-reset-btn"
+          onClick={handleReset}
+        >
           Reset Game
         </button>
       </div>
@@ -67,7 +83,11 @@ export default function DementiaCode() {
 
       <div className="split-grid">
         <GenerationFeed log={log} />
-        <UpgradeShop ownedLevels={upgrades} storyPoints={storyPoints} onBuy={buyUpgrade} />
+        <UpgradeShop
+          ownedLevels={upgrades}
+          storyPoints={storyPoints}
+          onBuy={buyUpgrade}
+        />
       </div>
     </div>
   );

@@ -1,5 +1,9 @@
 import { NavLink } from "react-router-dom";
-import { NAV_ITEMS, SETTINGS_NAV_ITEM, FEATURE_FLAGS } from "../../config/appConfig";
+import {
+  NAV_ITEMS,
+  SETTINGS_NAV_ITEM,
+  FEATURE_FLAGS,
+} from "../../config/appConfig";
 import Icon from "../common/Icon";
 import "./Sidebar.css";
 
@@ -7,13 +11,20 @@ const VISIBLE_NAV_ITEMS = NAV_ITEMS.filter(
   (item) => item.path !== "/dementia-code" || FEATURE_FLAGS.enableDementiaCode,
 );
 
-export default function Sidebar({ mobileOpen, onCloseMobile, collapsed, onToggleCollapsed }) {
+export default function Sidebar({
+  mobileOpen,
+  onCloseMobile,
+  collapsed,
+  onToggleCollapsed,
+}) {
   const renderLink = (item) => (
     <NavLink
       key={item.path}
       to={item.path}
       end={item.end}
-      className={({ isActive }) => `sidebar-link${isActive ? " is-active" : ""}`}
+      className={({ isActive }) =>
+        `sidebar-link${isActive ? " is-active" : ""}`
+      }
       onClick={onCloseMobile}
     >
       <Icon name={item.icon} size={18} />

@@ -7,7 +7,10 @@ import "./AppShell.css";
 
 export default function AppShell() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [collapsed, setCollapsed] = usePersistentState("sidebar-collapsed", false);
+  const [collapsed, setCollapsed] = usePersistentState(
+    "sidebar-collapsed",
+    false,
+  );
   const { pathname } = useLocation();
 
   // Close the mobile drawer whenever the route changes (derived during

@@ -28,7 +28,13 @@ export default function App() {
         <Route path="/context-shrink" element={lazyRoute(ContextShrink)} />
         <Route
           path="/dementia-code"
-          element={FEATURE_FLAGS.enableDementiaCode ? lazyRoute(DementiaCode) : <NotFound />}
+          element={
+            FEATURE_FLAGS.enableDementiaCode ? (
+              lazyRoute(DementiaCode)
+            ) : (
+              <NotFound />
+            )
+          }
         />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<NotFound />} />

@@ -62,7 +62,8 @@ export function removeComments(code) {
 
 // Only removes lines that are ENTIRELY a console statement, so a
 // console.log embedded inside a larger expression is left alone.
-const CONSOLE_STATEMENT_PATTERN = /^\s*console\.(log|debug|info|warn|trace)\([^;]*\);?\s*$/;
+const CONSOLE_STATEMENT_PATTERN =
+  /^\s*console\.(log|debug|info|warn|trace)\([^;]*\);?\s*$/;
 
 export function removeConsoleLogs(code) {
   return code
@@ -74,7 +75,10 @@ export function removeConsoleLogs(code) {
 export function collapseBlankLines(code) {
   const collapsed = code
     .split("\n")
-    .filter((line, index, lines) => !(line.trim() === "" && lines[index - 1]?.trim() === ""));
+    .filter(
+      (line, index, lines) =>
+        !(line.trim() === "" && lines[index - 1]?.trim() === ""),
+    );
   return collapsed.join("\n").replace(/^\n+/, "").replace(/\n+$/, "\n");
 }
 

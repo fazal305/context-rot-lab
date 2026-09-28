@@ -3,7 +3,10 @@
 // AI assistant might introduce once context gets large and noisy. Given the
 // same code + severity, it always produces the same output — the "random"
 // pool order is seeded from a hash of the input rather than Math.random().
-import { STALE_CODE_FRAGMENTS, IRRELEVANT_CODE_FRAGMENTS } from "../data/bugFragments";
+import {
+  STALE_CODE_FRAGMENTS,
+  IRRELEVANT_CODE_FRAGMENTS,
+} from "../data/bugFragments";
 import { clamp } from "./number";
 
 function hashString(str) {
@@ -100,7 +103,10 @@ function deepenPropertyAccess(lines, rng) {
   if (match[2] === wrapper) return null;
 
   const newLines = [...lines];
-  newLines[index] = lines[index].replace(pattern, `${match[1]}.${wrapper}.${match[2]}`);
+  newLines[index] = lines[index].replace(
+    pattern,
+    `${match[1]}.${wrapper}.${match[2]}`,
+  );
   return {
     lines: newLines,
     description: `Deepened property access \`${match[1]}.${match[2]}\` → \`${match[1]}.${wrapper}.${match[2]}\`.`,
@@ -128,15 +134,24 @@ function removeCallArgument(lines, rng) {
 
   const newLines = [...lines];
   newLines[index] = line.replace(pattern, `(${args.join(", ")})`);
-  return { lines: newLines, description: `Removed argument \`${removed}\` from a function call.` };
+  return {
+    lines: newLines,
+    description: `Removed argument \`${removed}\` from a function call.`,
+  };
 }
 
 function duplicateRandomLine(lines, rng) {
-  const nonEmptyIndexes = lines.map((line, index) => (line.trim() ? index : -1)).filter((index) => index >= 0);
+  const nonEmptyIndexes = lines
+    .map((line, index) => (line.trim() ? index : -1))
+    .filter((index) => index >= 0);
   if (!nonEmptyIndexes.length) return null;
 
   const index = pick(nonEmptyIndexes, rng);
-  const newLines = [...lines.slice(0, index + 1), lines[index], ...lines.slice(index + 1)];
+  const newLines = [
+    ...lines.slice(0, index + 1),
+    lines[index],
+    ...lines.slice(index + 1),
+  ];
   return { lines: newLines, description: "Duplicated a line of code." };
 }
 
@@ -151,11 +166,16 @@ function mutateImportPath(lines, rng) {
   const index = pick(candidates, rng);
   const match = lines[index].match(pattern);
   const original = match[3];
-  const mutated = original.startsWith(".") ? original.replace(/\/[^/]+$/, "/legacy") : `${original}-legacy`;
+  const mutated = original.startsWith(".")
+    ? original.replace(/\/[^/]+$/, "/legacy")
+    : `${original}-legacy`;
 
   const newLines = [...lines];
   newLines[index] = `${match[1]}${match[2]}${mutated}${match[2]}${match[4]}`;
-  return { lines: newLines, description: `Changed import path \`${original}\` → \`${mutated}\`.` };
+  return {
+    lines: newLines,
+    description: `Changed import path \`${original}\` → \`${mutated}\`.`,
+  };
 }
 
 function alterEndpointPath(lines, rng) {
@@ -170,17 +190,25 @@ function alterEndpointPath(lines, rng) {
   const line = lines[index];
   const match = line.match(pattern);
   const original = match[2];
-  const mutated = rng() > 0.5 ? `${original}/v2` : original.replace(/\/[^/]+$/, "/legacy");
+  const mutated =
+    rng() > 0.5 ? `${original}/v2` : original.replace(/\/[^/]+$/, "/legacy");
 
   const newLines = [...lines];
   newLines[index] = line.replace(pattern, `${match[1]}${mutated}${match[1]}`);
-  return { lines: newLines, description: `Altered endpoint path \`${original}\` → \`${mutated}\`.` };
+  return {
+    lines: newLines,
+    description: `Altered endpoint path \`${original}\` → \`${mutated}\`.`,
+  };
 }
 
 function insertForeignFragment(lines, rng, pool, description) {
   const fragment = pick(pool, rng);
   const position = Math.floor(rng() * (lines.length + 1));
-  const newLines = [...lines.slice(0, position), fragment, ...lines.slice(position)];
+  const newLines = [
+    ...lines.slice(0, position),
+    fragment,
+    ...lines.slice(position),
+  ];
   return { lines: newLines, description };
 }
 
@@ -200,7 +228,12 @@ const TRANSFORMATIONS = [
       "Mixed in a stale fragment carried over from earlier context.",
     ),
   (lines, rng) =>
-    insertForeignFragment(lines, rng, IRRELEVANT_CODE_FRAGMENTS, "Inserted unrelated code not present in the original context."),
+    insertForeignFragment(
+      lines,
+      rng,
+      IRRELEVANT_CODE_FRAGMENTS,
+      "Inserted unrelated code not present in the original context.",
+    ),
 ];
 
 // severity is 0–1. Returns { code, issues } where issues is a list of

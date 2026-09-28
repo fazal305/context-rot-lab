@@ -35,7 +35,9 @@ body {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  transition:
+    background-color var(--transition-normal),
+    color var(--transition-normal);
 }
 
 #root {
@@ -44,7 +46,12 @@ body {
   flex-direction: column;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-sans);
   font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-tight);
@@ -67,7 +74,10 @@ a:hover {
   color: var(--color-accent-strong);
 }
 
-code, pre, kbd, samp,
+code,
+pre,
+kbd,
+samp,
 .font-mono {
   font-family: var(--font-mono);
 }

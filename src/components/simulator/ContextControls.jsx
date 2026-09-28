@@ -1,19 +1,34 @@
 import Icon from "../common/Icon";
 import "./ContextControls.css";
 
-function DiffStat({ label, before, after, format = (v) => v, lowerIsBetter = true }) {
+function DiffStat({
+  label,
+  before,
+  after,
+  format = (v) => v,
+  lowerIsBetter = true,
+}) {
   const improved = lowerIsBetter ? after < before : after > before;
   const changed = after !== before;
   return (
-    <span className={`context-diff-stat${changed ? (improved ? " is-better" : " is-worse") : ""}`}>
+    <span
+      className={`context-diff-stat${changed ? (improved ? " is-better" : " is-worse") : ""}`}
+    >
       {label}: {format(before)} → {format(after)}
     </span>
   );
 }
 
-export default function ContextControls({ operations, onApply, lastOperation }) {
+export default function ContextControls({
+  operations,
+  onApply,
+  lastOperation,
+}) {
   return (
-    <section className="context-controls surface-card" aria-label="Context operations">
+    <section
+      className="context-controls surface-card"
+      aria-label="Context operations"
+    >
       <div className="context-controls-buttons">
         {operations.map((operation) => (
           <button

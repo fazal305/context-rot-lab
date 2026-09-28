@@ -32,7 +32,12 @@ const TOKEN_HEALTH_LEVELS = [
 // HIGH/CRITICAL bands, for the Token Health Indicator.
 export function getTokenHealth(tokens, maxTokens) {
   const ratio = maxTokens > 0 ? tokens / maxTokens : 0;
-  return TOKEN_HEALTH_LEVELS.find((entry) => ratio <= entry.maxRatio) ?? TOKEN_HEALTH_LEVELS[TOKEN_HEALTH_LEVELS.length - 1];
+  return (
+    TOKEN_HEALTH_LEVELS.find((entry) => ratio <= entry.maxRatio) ??
+    TOKEN_HEALTH_LEVELS[TOKEN_HEALTH_LEVELS.length - 1]
+  );
 }
 
-export const TOKEN_HEALTH_LEVEL_ORDER = TOKEN_HEALTH_LEVELS.map((entry) => entry.level);
+export const TOKEN_HEALTH_LEVEL_ORDER = TOKEN_HEALTH_LEVELS.map(
+  (entry) => entry.level,
+);

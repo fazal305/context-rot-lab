@@ -15,13 +15,18 @@ export default function Settings() {
 
   return (
     <div>
-      <PageHeader title="Settings" description="Application-wide preferences, shared across every mode." />
+      <PageHeader
+        title="Settings"
+        description="Application-wide preferences, shared across every mode."
+      />
 
       <section className="settings-section surface-card">
         <div className="settings-row">
           <div>
             <h2 className="settings-row-title">Theme</h2>
-            <p className="settings-row-description">Dark, light, or match your system preference.</p>
+            <p className="settings-row-description">
+              Dark, light, or match your system preference.
+            </p>
           </div>
           <ThemeToggle />
         </div>
@@ -32,11 +37,16 @@ export default function Settings() {
           <div>
             <h2 className="settings-row-title">Local data</h2>
             <p className="settings-row-description">
-              Theme preference, the simulator's context, ContextShrink settings, and Dementia Code progress
-              are all saved to this browser's local storage — nothing is sent to a server.
+              Theme preference, the simulator's context, ContextShrink settings,
+              and Dementia Code progress are all saved to this browser's local
+              storage — nothing is sent to a server.
             </p>
           </div>
-          <button type="button" className="action-button settings-clear-btn" onClick={handleClearData}>
+          <button
+            type="button"
+            className="action-button settings-clear-btn"
+            onClick={handleClearData}
+          >
             Clear Local Data
           </button>
         </div>

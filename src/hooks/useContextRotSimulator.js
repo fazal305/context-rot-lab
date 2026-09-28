@@ -5,7 +5,10 @@ import { analyzeContext, getContextTier } from "../utils/contextRot";
 import { applyContextOperation } from "../utils/contextOperations";
 import { getTextStats } from "../utils/tokenEstimator";
 import { getItem, setItem } from "../services/storageService";
-import { DEFAULT_SIMULATOR_EXAMPLE, SIMULATOR_EXAMPLES } from "../data/simulatorExamples";
+import {
+  DEFAULT_SIMULATOR_EXAMPLE,
+  SIMULATOR_EXAMPLES,
+} from "../data/simulatorExamples";
 import { CONTEXT_OPERATIONS } from "../data/contextOperations";
 import { ANALYSIS_DEBOUNCE_MS } from "../config/simulationConfig";
 
@@ -59,7 +62,12 @@ function reducer(state, action) {
       const after = snapshotMetrics(nextText);
       return {
         text: nextText,
-        lastOperation: { id: action.operationId, label: action.label, before, after },
+        lastOperation: {
+          id: action.operationId,
+          label: action.label,
+          before,
+          after,
+        },
       };
     }
     case "RESET":
@@ -70,7 +78,10 @@ function reducer(state, action) {
 }
 
 function createAnalyzerWorker() {
-  return new Worker(new URL("../workers/contextAnalyzer.worker.js", import.meta.url), { type: "module" });
+  return new Worker(
+    new URL("../workers/contextAnalyzer.worker.js", import.meta.url),
+    { type: "module" },
+  );
 }
 
 export function useContextRotSimulator() {
@@ -87,13 +98,20 @@ export function useContextRotSimulator() {
 
   // Expensive analysis + bug injection, offloaded to a Web Worker so large
   // pasted contexts never block the input while the user is still typing.
-  const { result: simulation, isProcessing, run } = useWorkerTask(createAnalyzerWorker);
+  const {
+    result: simulation,
+    isProcessing,
+    run,
+  } = useWorkerTask(createAnalyzerWorker);
 
   useEffect(() => {
     run(debouncedText);
   }, [debouncedText, run]);
 
-  const setText = useCallback((text) => dispatch({ type: "SET_TEXT", text }), []);
+  const setText = useCallback(
+    (text) => dispatch({ type: "SET_TEXT", text }),
+    [],
+  );
 
   const loadExample = useCallback((exampleId) => {
     const example = SIMULATOR_EXAMPLES.find((item) => item.id === exampleId);
@@ -105,7 +123,11 @@ export function useContextRotSimulator() {
       dispatch({ type: "RESET" });
       return;
     }
-    dispatch({ type: "APPLY_OPERATION", operationId: operation.id, label: operation.label });
+    dispatch({
+      type: "APPLY_OPERATION",
+      operationId: operation.id,
+      label: operation.label,
+    });
   }, []);
 
   return {

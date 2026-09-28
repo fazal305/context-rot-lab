@@ -15,7 +15,10 @@ export default function UpgradeShop({ ownedLevels, storyPoints, onBuy }) {
           const affordable = storyPoints >= cost;
 
           return (
-            <div key={upgrade.id} className={`upgrade-card${maxed ? " is-maxed" : ""}`}>
+            <div
+              key={upgrade.id}
+              className={`upgrade-card${maxed ? " is-maxed" : ""}`}
+            >
               <div className="upgrade-card-header">
                 <span className="upgrade-card-name">{upgrade.name}</span>
                 <span className="upgrade-card-level">

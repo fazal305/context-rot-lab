@@ -2,7 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { copyToClipboard } from "../../utils/fileUtils";
 import Icon from "./Icon";
 
-export default function CopyButton({ getText, label = "Copy", copiedLabel = "Copied" }) {
+export default function CopyButton({
+  getText,
+  label = "Copy",
+  copiedLabel = "Copied",
+}) {
   const [copied, setCopied] = useState(false);
   const timeoutRef = useRef(null);
 

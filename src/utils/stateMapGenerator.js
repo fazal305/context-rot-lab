@@ -50,7 +50,10 @@ export function extractComponentName(code) {
 }
 
 export function extractProps(code) {
-  const patterns = [/function\s+[A-Z]\w*\s*\(\s*\{([^}]*)\}/, /const\s+[A-Z]\w*\s*=\s*\(\s*\{([^}]*)\}/];
+  const patterns = [
+    /function\s+[A-Z]\w*\s*\(\s*\{([^}]*)\}/,
+    /const\s+[A-Z]\w*\s*=\s*\(\s*\{([^}]*)\}/,
+  ];
   for (const pattern of patterns) {
     const match = code.match(pattern);
     if (match) {
@@ -64,11 +67,16 @@ export function extractProps(code) {
 }
 
 export function extractState(code) {
-  const pattern = /const\s*\[\s*(\w+)\s*,\s*(\w+)\s*\]\s*=\s*useState(?:<[^>]*>)?\(([^;]*)\)/g;
+  const pattern =
+    /const\s*\[\s*(\w+)\s*,\s*(\w+)\s*\]\s*=\s*useState(?:<[^>]*>)?\(([^;]*)\)/g;
   const results = [];
   let match = pattern.exec(code);
   while (match) {
-    results.push({ name: match[1], setter: match[2], type: inferType(match[3]) });
+    results.push({
+      name: match[1],
+      setter: match[2],
+      type: inferType(match[3]),
+    });
     match = pattern.exec(code);
   }
   return results;
@@ -121,7 +129,11 @@ export function generateStateMap(code) {
 // Compact, copy-paste-ready summary for pasting into an AI conversation.
 export function formatStateMapSummary(stateMap) {
   const lines = [`Component: ${stateMap.componentName}`, "", "Props:"];
-  lines.push(...(stateMap.props.length ? stateMap.props.map((prop) => `- ${prop}`) : ["- (none detected)"]));
+  lines.push(
+    ...(stateMap.props.length
+      ? stateMap.props.map((prop) => `- ${prop}`)
+      : ["- (none detected)"]),
+  );
 
   lines.push("", "State:");
   lines.push(
@@ -131,7 +143,11 @@ export function formatStateMapSummary(stateMap) {
   );
 
   lines.push("", "Hooks:");
-  lines.push(...(stateMap.allHooks.length ? stateMap.allHooks.map((hook) => `- ${hook}`) : ["- (none detected)"]));
+  lines.push(
+    ...(stateMap.allHooks.length
+      ? stateMap.allHooks.map((hook) => `- ${hook}`)
+      : ["- (none detected)"]),
+  );
 
   return lines.join("\n");
 }

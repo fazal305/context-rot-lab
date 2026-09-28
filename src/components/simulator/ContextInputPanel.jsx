@@ -3,7 +3,14 @@ import StatusIndicator from "../common/StatusIndicator";
 import FileImportButton from "../common/FileImportButton";
 import "./ContextInputPanel.css";
 
-export default function ContextInputPanel({ value, onChange, liveStats, tier, examples, onLoadExample }) {
+export default function ContextInputPanel({
+  value,
+  onChange,
+  liveStats,
+  tier,
+  examples,
+  onLoadExample,
+}) {
   return (
     <section className="panel surface-card" aria-label="Context input">
       <div className="panel-header">
@@ -43,10 +50,16 @@ export default function ContextInputPanel({ value, onChange, liveStats, tier, ex
 
       <div className="panel-footer">
         <div className="context-panel-stats">
-          <StatChip label="Characters" value={liveStats.characters.toLocaleString()} />
+          <StatChip
+            label="Characters"
+            value={liveStats.characters.toLocaleString()}
+          />
           <StatChip label="Words" value={liveStats.words.toLocaleString()} />
           <StatChip label="Lines" value={liveStats.lines.toLocaleString()} />
-          <StatChip label="Tokens (est.)" value={liveStats.tokens.toLocaleString()} />
+          <StatChip
+            label="Tokens (est.)"
+            value={liveStats.tokens.toLocaleString()}
+          />
         </div>
         <div className="context-panel-quality">
           <span className="context-panel-quality-label">Context quality</span>

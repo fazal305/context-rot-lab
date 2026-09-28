@@ -22,7 +22,9 @@ function applyToDocument(resolved) {
 // styles/tokens.css keys off of. index.html applies the stored preference
 // synchronously before React mounts, so there is no flash of wrong theme.
 export function useTheme() {
-  const [preference, setPreference] = useState(() => getItem(STORAGE_KEY, DEFAULT_PREFERENCE));
+  const [preference, setPreference] = useState(() =>
+    getItem(STORAGE_KEY, DEFAULT_PREFERENCE),
+  );
   const [systemTheme, setSystemTheme] = useState(() => resolveSystemTheme());
 
   const resolvedTheme = preference === "system" ? systemTheme : preference;

@@ -1,5 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { APP_NAME, ROUTE_STATUS, DEFAULT_ROUTE_STATUS } from "../../config/appConfig";
+import {
+  APP_NAME,
+  ROUTE_STATUS,
+  DEFAULT_ROUTE_STATUS,
+} from "../../config/appConfig";
 import StatusIndicator from "../common/StatusIndicator";
 import ThemeToggle from "./ThemeToggle";
 import Icon from "../common/Icon";
